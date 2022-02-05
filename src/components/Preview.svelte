@@ -1,5 +1,5 @@
 <script>
-  import { previewTextStore } from "../src/stores/OptionsStore";
+  import { previewTextStore } from "../stores/OptionsStore";
   let styles = {
     "fontsize-h1": "#f4ed2a",
     "fontsize-h2": "#FF5555",

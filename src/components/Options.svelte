@@ -1,6 +1,7 @@
 <script>
-  import { previewTextStore } from "../src/stores/OptionsStore";
-  import { afterUpdate } from "svelte";
+  import { previewTextStore } from "../stores/OptionsStore";
+  import { afterUpdate, onMount } from "svelte";
+  import axios from "axios";
 
   import {
     NumberInput,
@@ -11,6 +12,19 @@
   } from "carbon-components-svelte";
 
   let previewTextValue = "Example Text";
+  let fonts = [];
+
+  async function fetchAllFont(params) {
+    const response = axios.get(
+      "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAR241wnumVsTYbrVAwd-ijkclQLr2Lb6M"
+    );
+    const data = await response.data;
+    fonts = data;
+  }
+
+  onMount(() => {
+    fetchAllFont();
+  });
 
   afterUpdate(() => {
     previewTextStore.set(previewTextValue);
@@ -33,6 +47,7 @@
     <SelectItem value="custom" text="Custom..." />
   </Select>
 </div>
+{fonts}
 <div class="input-area-margin">
   <Select labelText="Google Fonts" selected="g10">
     <SelectItem value="white" text="White" />

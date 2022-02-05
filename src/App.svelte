@@ -1,8 +1,8 @@
 <script>
   import "carbon-components-svelte/css/all.css";
 
-  import Preview from "./Preview.svelte";
-  import Options from "./Options.svelte";
+  import Preview from "./components/Preview.svelte";
+  import Options from "./components/Options.svelte";
 
   let theme = "g100"; // "white" | "g10" | "g80" | "g90" | "g100"
 
